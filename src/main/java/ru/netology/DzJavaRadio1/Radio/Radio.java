@@ -3,7 +3,24 @@ package ru.netology.DzJavaRadio1.Radio;
 public class Radio {
     private int currentStation;
     private int levelVolume;
+    private int maxNumberStation;
+
+    public Radio(){
+       maxNumberStation = 9;
+
+
+    }
+    public Radio( int stationsCount){
+
+            maxNumberStation = stationsCount - 1;
+        }
+        public int getMaxNumberStation () {
+            return maxNumberStation;
+
+    }
+
     public int getCurrentStation() {
+
         return currentStation;
     }
 
@@ -11,14 +28,14 @@ public class Radio {
         if (currentStation < 0) {
             return;
         }
-        if ( currentStation > 9) {
+        if ( currentStation > maxNumberStation) {
             return;
         }
         this.currentStation = currentStation;
 
     }
     public void nextStation() {
-        if (currentStation < 9){
+        if (currentStation < maxNumberStation){
             currentStation++;
         }
         else{
@@ -30,7 +47,7 @@ public class Radio {
             currentStation--;
         }
         else{
-            currentStation = 9;
+            currentStation = maxNumberStation;
         }
     }
 
@@ -42,10 +59,10 @@ public class Radio {
         this.levelVolume = levelVolume;
     }
     public void nextVolume() {
-        if (levelVolume < 10) {
+        if (levelVolume < 100) {
             levelVolume++;
         } else {
-            levelVolume = 10;
+            levelVolume = 100;
         }
     }
     public void prevVolume () {

@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import ru.netology.DzJavaRadio1.Radio.Radio;
@@ -71,9 +72,9 @@ public class RadioTest {
     @CsvSource(
             value = {
                     "5,6",
-                    "9,10",
-                    "10,10",
-                    "0,1",
+                    "98,99",
+                    "99,100",
+                    "100,100",
                     "1,2",
             }
     )
@@ -108,5 +109,82 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
 
+    }
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "30,29",
+                    "40,39",
+                    "1,0"
+            }
+    )
+    public void tetsSetCountStation(int stationsCount, int expected ) {
+        Radio count = new Radio(stationsCount);
+
+        int actual = count.getMaxNumberStation();
+
+       Assertions.assertEquals(expected, actual);
+    }
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "30,15,15",
+                    "40,39,39",
+                    "40,40,0",
+                    "0,0,0",
+                    "1, 0,0",
+                    "1,1,0",
+                    "0,0,0",
+                    "2, 1,1"
+            }
+    )
+    public void tetsSetCountAndNumberStation(int stationsCount, int setStation, int expected ) {
+        Radio count = new Radio(stationsCount);
+
+
+        count.setCurrentStation(setStation);
+        int actual = count.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "40,38,39",
+                    "20,19,0",
+                    "20,18,19",
+                    "20,0,1",
+                    "20, 1,2"
+            }
+    )
+    public void tetsCountAndNextStation(int stationsCount, int setStation, int expected ) {
+        Radio count = new Radio(stationsCount);
+        count.setCurrentStation(setStation);
+
+        count.nextStation();
+
+        int actual = count.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "20,0,19",
+                    "20,19,18",
+                    "20,18,17",
+                    "20,1,0",
+                    "20, 2,1"
+            }
+    )
+    public void tetsCountAndPrevStation(int stationsCount, int setStation, int expected ) {
+        Radio count = new Radio(stationsCount);
+        count.setCurrentStation(setStation);
+
+        count.prevStation();
+
+        int actual = count.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
     }
 }
