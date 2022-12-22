@@ -18,7 +18,7 @@ public class RadioTest {
                     "-2,0"
             }
     )
-    public void tetsSetStation( int setStation, int expected ){
+    public void tetsSetStation(int setStation, int expected) {
         Radio radio = new Radio();
 
         radio.setCurrentStation(setStation);
@@ -28,6 +28,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -37,7 +38,7 @@ public class RadioTest {
                     "0,1",
             }
     )
-    public void tetsSetNextStation( int setStation, int expected ){
+    public void tetsSetNextStation(int setStation, int expected) {
         Radio radio = new Radio();
         radio.setCurrentStation(setStation);
 
@@ -48,6 +49,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -57,7 +59,7 @@ public class RadioTest {
                     "9,8",
             }
     )
-    public void tetsSetPrevStation( int setStation, int expected ){
+    public void tetsSetPrevStation(int setStation, int expected) {
         Radio radio = new Radio();
         radio.setCurrentStation(setStation);
 
@@ -68,6 +70,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -78,7 +81,7 @@ public class RadioTest {
                     "1,2",
             }
     )
-    public void tetsSetNextVolume( int setVolume, int expected ){
+    public void tetsSetNextVolume(int setVolume, int expected) {
         Radio radio = new Radio();
         radio.setLevelVolume(setVolume);
 
@@ -89,6 +92,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -99,7 +103,7 @@ public class RadioTest {
                     "10,9",
             }
     )
-    public void tetsSetPrevVolume( int setVolume, int expected ){
+    public void tetsSetPrevVolume(int setVolume, int expected) {
         Radio radio = new Radio();
         radio.setLevelVolume(setVolume);
 
@@ -110,6 +114,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -118,35 +123,36 @@ public class RadioTest {
                     "1,0"
             }
     )
-    public void tetsSetCountStation(int stationsCount, int expected ) {
+    public void tetsSetCountStation(int stationsCount, int expected) {
         Radio count = new Radio(stationsCount);
 
         int actual = count.getMaxNumberStation();
 
-       Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
                     "30,15,15",
                     "40,39,39",
                     "40,40,0",
-                    "0,0,0",
+                    "40,41,0",
                     "1, 0,0",
                     "1,1,0",
                     "0,0,0",
                     "2, 1,1"
             }
     )
-    public void tetsSetCountAndNumberStation(int stationsCount, int setStation, int expected ) {
+    public void tetsSetCountAndNumberStation(int stationsCount, int setStation, int expected) {
         Radio count = new Radio(stationsCount);
-
-
         count.setCurrentStation(setStation);
+
         int actual = count.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -157,7 +163,7 @@ public class RadioTest {
                     "20, 1,2"
             }
     )
-    public void tetsCountAndNextStation(int stationsCount, int setStation, int expected ) {
+    public void tetsCountAndNextStation(int stationsCount, int setStation, int expected) {
         Radio count = new Radio(stationsCount);
         count.setCurrentStation(setStation);
 
@@ -167,6 +173,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -177,7 +184,7 @@ public class RadioTest {
                     "20, 2,1"
             }
     )
-    public void tetsCountAndPrevStation(int stationsCount, int setStation, int expected ) {
+    public void tetsCountAndPrevStation(int stationsCount, int setStation, int expected) {
         Radio count = new Radio(stationsCount);
         count.setCurrentStation(setStation);
 
